@@ -1,6 +1,9 @@
 package main;
 
 import javax.swing.*;
+
+import services.AccountService;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +21,7 @@ public class Dashboard extends JFrame {
         // Welcome message
         JLabel welcomeLabel = new JLabel("Welcome, " + username + "!", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 16));
+
         add(welcomeLabel, BorderLayout.NORTH);
 
         // Buttons for actions
@@ -39,11 +43,36 @@ public class Dashboard extends JFrame {
         statusArea.setEditable(false);
         add(new JScrollPane(statusArea), BorderLayout.SOUTH);
 
-        // Button actions (placeholders)
-        createAccountButton.addActionListener(e -> statusArea.append("Create Account clicked.\n"));
-        depositButton.addActionListener(e -> statusArea.append("Deposit clicked.\n"));
-        withdrawButton.addActionListener(e -> statusArea.append("Withdraw clicked.\n"));
-        viewBalanceButton.addActionListener(e -> statusArea.append("View Balance clicked.\n"));
+
+        viewBalanceButton.addActionListener(e ->{
+            AccountService accountService = new AccountService();
+            double balance = accountService.getBalance(username);
+            statusArea.append("Your current balance is $"+ balance+"\n");
+
+        });
+
+        createAccountButton.addActionListener(e->{
+            String user = JOptionPane.showInputDialog(this, "Enter your username:");
+            String balanceStr = JOptionPane.showInputDialog(this, "Enter initial balance:");
+
+            if (user !=null && balanceStr !=null){
+                try{
+                    double initialBalance = Double.parseDouble(balanceStr);
+                    AccountService accountService = new AccountService();
+                    if( accountService.createAccount(user, initialBalance)){
+                        statusArea.append("Account created for "+ user+" with balance "+ initialBalance+"\n");
+
+                    }else{
+                        statusArea.append("Failed to create account. Username may already exist.\n");
+                    }
+                }catch(NumberFormatException ex){
+                    statusArea.append("Invalid balance input.\n");  
+                }
+            }
+
+
+        });
+       
     }
 
 }

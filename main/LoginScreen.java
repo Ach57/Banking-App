@@ -23,8 +23,18 @@ public class LoginScreen extends JFrame implements Encryption, FileUtils {
 
         // Create components
         JLabel userLabel = new JLabel("Username:");
+        userLabel.setForeground(Color.BLUE);
+        userLabel.setFont(new Font("Arial",Font.BOLD, 14));
+        userLabel.setBorder(BorderFactory.createEmptyBorder(10,10,5,5));
+
         JTextField userField = new JTextField(15);
+        
         JLabel passLabel = new JLabel("Password:");
+        passLabel.setForeground(Color.BLUE);
+        passLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        passLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 5));
+
+
         JPasswordField passField = new JPasswordField(15);
         JButton loginButton = new JButton("Login");
         JButton registerButton = new JButton("Register");
