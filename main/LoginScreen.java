@@ -11,7 +11,9 @@ import java.awt.datatransfer.FlavorListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.MessageDigest;
+import java.util.logging.Logger;
 import java.nio.file.*;
+
 
 public class LoginScreen extends JFrame implements Encryption, FileUtils {
 
@@ -58,6 +60,7 @@ public class LoginScreen extends JFrame implements Encryption, FileUtils {
             if (authenticateUser(username, password)){
                 JOptionPane.showMessageDialog(null, "Login Successful!");
                 dispose();
+
                 Dashboard dashboard = new Dashboard(username);
                 dashboard.setVisible(true);
             }else{
