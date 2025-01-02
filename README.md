@@ -15,8 +15,6 @@ This is a desktop banking application built with Java Swing, designed to provide
 5. Logout
   - Safely exits the dashboard and returns to the login screen.
 
-## Features
-
 ### Budgeting Tool
 
 - **Create Budgets**  
