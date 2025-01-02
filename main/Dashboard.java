@@ -15,7 +15,7 @@ public class Dashboard extends JFrame {
     public Dashboard(String username) {
         // Frame settings
         setTitle("Banking App - Dashboard");
-        setSize(1000, 500);
+        setSize(700, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
