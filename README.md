@@ -41,3 +41,24 @@ This is a desktop banking application built with Java Swing, designed to provide
   - Clean and modern UI layout with interactive buttons.  
   - Real-time status feedback to enhance user experience.
 
+# How to Run the Application
+
+To run the application, follow these steps:
+
+1. Ensure you have **Java Development Kit (JDK)** installed on your system.  
+   - Recommended version: `Java 8` or above.  
+
+2. Clone this repository or download the project files to your local machine.
+
+3. Navigate to the `src/main/` folder in your terminal or IDE.
+
+4. Compile and run the `MainApp.java` file:
+   - Using the command line:  
+     ```bash
+     javac MainApp.java
+     java MainApp
+     ```
+   - Or, open the project in an IDE (e.g., IntelliJ IDEA, Eclipse) and run the `MainApp.java` file.
+
+5. The application will launch, starting with the login screen.
+
