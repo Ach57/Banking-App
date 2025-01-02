@@ -30,6 +30,9 @@ public class Dashboard extends JFrame {
         JButton withdrawButton = new JButton("Withdraw");
         JButton viewBalanceButton = new JButton("View Balance");
         JButton logoutButton = new JButton("Logout");
+        JButton interestCalculatorButton = new JButton("Interest Calculator");
+        JButton budgetToolButton = new JButton("Budgeting Tool");
+        
 
         // Add buttons to a panel
         JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 10));
@@ -37,6 +40,8 @@ public class Dashboard extends JFrame {
         buttonPanel.add(depositButton);
         buttonPanel.add(withdrawButton);
         buttonPanel.add(viewBalanceButton);
+        buttonPanel.add(interestCalculatorButton); 
+        buttonPanel.add(budgetToolButton);
         add(buttonPanel, BorderLayout.CENTER);
 
 
@@ -141,6 +146,17 @@ public class Dashboard extends JFrame {
             
 
         });
+
+        interestCalculatorButton.addActionListener(e->{
+            InterestCalculatorDialog calculatorDialog = new InterestCalculatorDialog(this);
+            calculatorDialog.setVisible(true);
+
+        });
+
+        budgetToolButton.addActionListener(e->{
+            BudgetToolDialog budgetDialog = new BudgetToolDialog(this);
+            budgetDialog.setVisible(true);
+        }); 
        
     }
 

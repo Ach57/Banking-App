@@ -5,14 +5,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class InterestCalculatorDialog extends JDialog {
-    public InterestCalculatorDialog(JFrame parentFrame){
-        super(parentFrame, "Interest Rate Calculator", true);
+    public InterestCalculatorDialog(JFrame parent) {
+        super(parent, "Interest Rate Calculator", true);
         setSize(400, 300);
         setLayout(new BorderLayout());
 
         JPanel inputPanel = new JPanel(new GridLayout(5, 2, 10, 10));
         inputPanel.add(new JLabel("Principal Amount:"));
-
         JTextField principalField = new JTextField();
         inputPanel.add(principalField);
 
@@ -25,7 +24,7 @@ public class InterestCalculatorDialog extends JDialog {
         inputPanel.add(timeField);
 
         inputPanel.add(new JLabel("Compounding Frequency:"));
-        JTextField frequencyField = new JTextField("1");
+        JTextField frequencyField = new JTextField("1"); // Default to yearly compounding
         inputPanel.add(frequencyField);
 
         add(inputPanel, BorderLayout.CENTER);
@@ -34,8 +33,8 @@ public class InterestCalculatorDialog extends JDialog {
         JTextArea resultArea = new JTextArea(5, 30);
         resultArea.setEditable(false);
 
-        calculateButton.addActionListener(e->{
-            try{
+        calculateButton.addActionListener((ActionEvent e) -> {
+            try {
                 double principal = Double.parseDouble(principalField.getText());
                 double rate = Double.parseDouble(rateField.getText());
                 double time = Double.parseDouble(timeField.getText());
@@ -45,21 +44,15 @@ public class InterestCalculatorDialog extends JDialog {
                 double totalAmount = principal + compoundInterest;
 
                 resultArea.setText(String.format("Compound Interest: $%.2f\nTotal Amount: $%.2f", compoundInterest, totalAmount));
-
-            } catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(this, "Invalid input. Please enter valid numbers", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Invalid input. Please enter valid numbers.", "Error", JOptionPane.ERROR_MESSAGE);
             }
+        });
 
         JPanel southPanel = new JPanel(new BorderLayout());
         southPanel.add(calculateButton, BorderLayout.NORTH);
         southPanel.add(new JScrollPane(resultArea), BorderLayout.CENTER);
 
         add(southPanel, BorderLayout.SOUTH);
-
-
-        });
-
-
-
     }
 }
